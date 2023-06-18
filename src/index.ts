@@ -1,5 +1,4 @@
 import express, { Request, Response, NextFunction } from "express";
-import cors from "cors";
 import "dotenv/config";
 import { AppDataSource } from "./data-source";
 import routes from "./routes";
@@ -7,14 +6,6 @@ import routes from "./routes";
 AppDataSource.initialize()
   .then(() => {
     const app = express();
-
-    app.use(
-      cors({
-        //origin: 'http://seu-front-end.com', // Domínio do seu front-end
-        methods: ["GET", "POST", "PUT", "DELETE"], // Métodos HTTP permitidos
-        allowedHeaders: ["Content-Type", "Authorization"], // Cabeçalhos permitidos
-      })
-    );
 
     app.use(express.json());
 
